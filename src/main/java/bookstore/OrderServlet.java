@@ -53,14 +53,25 @@ public class OrderServlet extends HttpServlet {
 		// If cart is null, create a new ShoppingCart object.
 		// Set the session attribute by associating the String "bookstore.cart" with the newly created object.
 		/* Put your code here */
+		cart = (ShoppingCart) session.getAttribute("bookstore.cart");
+		if (cart == null) {
+            		cart = new ShoppingCart();
+            		session.setAttribute("bookstore.cart", cart);
+        	}
 
 		// Get the ArrayList object (namely books) from the session attribute ¡§foundBooks¡¨. 
 		// This ArrayList object, which was created in QueryServlet.class, 
 	// contains the book objects that match the search criteria specified in SearchBook.html
 		/* Put your code here */
+	        books = (ArrayList<Book>) session.getAttribute("foundBooks");
+	        if (books == null) {
+	            response.sendRedirect("/SearchBook.html");
+	            return;
+	        }
 		
 		// Get the index of the selected book from BookInfo.jsp
 		/* Put your code here */
+
 		
 		// Add the selected book object to the Shopping cart 
 	// Set the cart to session attribute
