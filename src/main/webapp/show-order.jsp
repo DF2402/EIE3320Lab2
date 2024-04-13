@@ -14,9 +14,9 @@
 	<%
 		// Get the shopping cart object. From the cart object, get the number of books
 		// Put your code here
-	        HttpSession session = request.getSession();
+		HttpSession session = request.getSession();
 	        ShoppingCart cart = (ShoppingCart) session.getAttribute("bookstore.cart");
-	        int numBooks = (cart != null) ? cart.getItemCount() : 0;
+	        int numBooks = (cart != null) ? cart.size() : 0; // corrected method to size()
 	%>
 	<p style="text-align: center;">
 		You have <%=numBooks %> item(s) in your shopping cart <br> 
@@ -33,8 +33,9 @@
 					<td><%=i+1 %></td> 
 					<!-- Get the title and price of the i-th book in the shopping cart -->
 					<!-- Put your code here -->
-			                <td><%= book.getTitle() %></td>
-			                <td><%= book.getPrice() %></td>
+					<% Book book = cart.getBook(i); %>
+					<td><%= book.getTitle() %></td>
+                    			<td><%= book.getPrice() %></td>
 				</tr>
 		<% } %>
 		<tr>
@@ -42,12 +43,8 @@
 			<td>Total:</td>
 			<!-- Get the total price -->
 			<!-- Put your code here -->
-    			<% double total = 0; %>
-    			<% for (int i = 0; i < numBooks; i++) { %>
-        			<% Book book = cart.getItem(i); %>
-        			<% total += book.getPrice(); %>
-    			<% } %>
-    			<td><%= total %></td>
+			<% double total = cart.getTotalPrice(); %>
+			<td><%= total %></td>
 		</tr>
 		</table>
 	<% } %>	
