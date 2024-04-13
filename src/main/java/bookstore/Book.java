@@ -14,32 +14,48 @@ public class Book implements Serializable {
 	public Book(String isbn, String author, String title, double price, int edition, String publisher, String copyright) {
 		//initialize the private attributes of the Book class
 		//Put your code here
+		this.isbn = isbn;
+	        this.author = author;
+	        this.title = title;
+	        this.price = price;
+	        this.edition = edition;
+	        this.publisher = publisher;
+	        this.copyright = copyright;
 	}
 	public String getIsbn() {
 		//Put your code here
+		return isbn;
 	}
 	public String getAuthor() {
 		//Put your code here
+		return author;
 	}
 	public int getEdition() {
 		//Put your code here
+		return edition;
 	}
 	public String getPublisher() {
 		//Put your code here
+		return publisher;
 	}
 	public String getCopyright() {
 		//Put your code here
+		return copyright;
 	}
 	public String getTitle() {
 		//Put your code here
+		return title;
 	}
 	public void setTitle(String title) {
 		//Put your code here
+		this.title = title;
 	}
 	public double getPrice() {
 		//Put your code here
+		return prince;
 	}
 	public void setPrice(double price) {
 		//Put your code here
+		this.price = price;
 	}
 }
