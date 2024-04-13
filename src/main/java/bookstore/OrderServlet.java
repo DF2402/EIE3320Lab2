@@ -40,6 +40,13 @@ public class OrderServlet extends HttpServlet {
 		// Get the session object, make sure that the user cannot access this servlet directly
 		// If the user attempts to access this servlet directly, forward the user to SearchBook.html.
 		/* Put your code here */
+        	HttpSession session = request.getSession(false); 
+		if (session == null || session.getAttribute("foundBooks") == null) {
+			url = "/SearchBook.html";
+           		response.sendRedirect(url);
+            		return;
+		}
+
 		  	
 		
 		// Get the ShoppingCart object (namely cart) from the session attribute "bookstore.cart". 
@@ -47,7 +54,7 @@ public class OrderServlet extends HttpServlet {
 		// Set the session attribute by associating the String "bookstore.cart" with the newly created object.
 		/* Put your code here */
 
-		// Get the ArrayList object (namely books) from the session attribute ¡§foundBooks¡¨. 
+		// Get the ArrayList object (namely books) from the session attribute Â¡Â§foundBooksÂ¡Â¨. 
 		// This ArrayList object, which was created in QueryServlet.class, 
 	// contains the book objects that match the search criteria specified in SearchBook.html
 		/* Put your code here */
