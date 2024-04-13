@@ -8,6 +8,12 @@ function validateForm() {
 	
 	// Make sure that either of the text boxes has been filled
 	// Put your code here
+	if (isBlank(isbn) && isBlank(author)) {
+		alert("Fill in at least one entry");
+		return false;
+	}
+
+	return true;
 }
 
 function isBlank(s) {
@@ -28,6 +34,19 @@ function isBlank(s) {
 	// Create a Date object using new Date(). Then call the getHours(), getMinutes(),
 	// getDate(), getMonth(), and getFullYear() method of the Date object.
 	// Put your code here
+	var currentDate = new Date();
+	var hours = currentDate.getHours();
+	var minutes = currentDate.getMinutes();
+	var day = currentDate.getDate();
+	var month = currentDate.getMonth() + 1; // JavaScript months are zero-based
+	var year = currentDate.getFullYear();
+
+	document.write("Student:<br>");
+	document.write("Student ID:<br><br>");
+
+	document.write("The time now is: " + hours + ":" + minutes + "<br>");
+	document.write("The date is: " + day + "/" + month + "/" + year + "<br><br>");
+
 	</script> 
 
 	<form name="search" onsubmit="return validateForm()" method="post" action="QueryServlet">
