@@ -52,7 +52,7 @@ public class Book implements Serializable {
 	}
 	public double getPrice() {
 		//Put your code here
-		return prince;
+		return price;
 	}
 	public void setPrice(double price) {
 		//Put your code here

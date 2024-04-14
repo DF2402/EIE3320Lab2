@@ -36,7 +36,6 @@ public class OrderServlet extends HttpServlet {
 		String url = "/show-order.jsp";
 		ShoppingCart cart;
 		ArrayList<Book> books;
-		System.out.println("test");
 		// Get the session object, make sure that the user cannot access this servlet directly
 		// If the user attempts to access this servlet directly, forward the user to SearchBook.html.
 		/* Put your code here */
