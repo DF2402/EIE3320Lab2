@@ -40,7 +40,7 @@ public class OrderServlet extends HttpServlet {
 		// Get the session object, make sure that the user cannot access this servlet directly
 		// If the user attempts to access this servlet directly, forward the user to SearchBook.html.
 		/* Put your code here */
-		HttpSession session = request.getSession(); 
+		HttpSession session = request.getSession(false); 
 		if (session == null || session.getAttribute("foundBooks") == null) {
 			url = "/SearchBook.html";
            		response.sendRedirect(url);
