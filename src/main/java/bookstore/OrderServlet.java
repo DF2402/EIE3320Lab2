@@ -36,11 +36,11 @@ public class OrderServlet extends HttpServlet {
 		String url = "/show-order.jsp";
 		ShoppingCart cart;
 		ArrayList<Book> books;
-		
+		System.out.println("test");
 		// Get the session object, make sure that the user cannot access this servlet directly
 		// If the user attempts to access this servlet directly, forward the user to SearchBook.html.
 		/* Put your code here */
-        	HttpSession session = request.getSession(false); 
+		HttpSession session = request.getSession(); 
 		if (session == null || session.getAttribute("foundBooks") == null) {
 			url = "/SearchBook.html";
            		response.sendRedirect(url);
@@ -63,23 +63,29 @@ public class OrderServlet extends HttpServlet {
 		// This ArrayList object, which was created in QueryServlet.class, 
 	// contains the book objects that match the search criteria specified in SearchBook.html
 		/* Put your code here */
-	        books = (ArrayList<Book>) session.getAttribute("foundBooks");
-	        if (books == null) {
+			ArrayList<Book> book = (ArrayList<Book>) session.getAttribute("foundBooks");
+	        if (book == null) {
 	            response.sendRedirect("/SearchBook.html");
 	            return;
 	        }
 		
 		// Get the index of the selected book from BookInfo.jsp
 		/* Put your code here */
-
+	        String selectedBook = request.getParameter("selectedBook") ;
+			System.out.println("selectedBook: "+selectedBook);
 		
 		// Add the selected book object to the Shopping cart 
 	// Set the cart to session attribute
 		/* Put your code here */
-		
+	        if (selectedBook != null) {
+	        	cart.addBook(book.get(Integer.parseInt(selectedBook)));
+	        	
+	        }
+	        session.setAttribute("bookstore.cart", cart);
 		// Forward the control to either show-order.jsp or SearchBook.html
 		/* Put your code here */
-
+	        request.getRequestDispatcher(url).forward(request, response);
+	     
 	}
 
 }

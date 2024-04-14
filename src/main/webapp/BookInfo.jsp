@@ -26,6 +26,16 @@
 
 	<% for (int i=0; i<numBooks; i++) { %>
 	<tr>
+		<tr> 
+			<% Book book = books.get(i);  %>
+			<td> <%= book.getIsbn() %></td>
+			<td> <%= book.getTitle() %></td>
+			<td> <%= book.getAuthor() %></td>
+			<td> <%= book.getEdition() %></td>
+			<td> <%= book.getPublisher() %></td>
+			<td> <%= book.getCopyright() %></td>
+			<td> <a href="/OrderServlet"  >Add to Cart</a></td>
+			
 		<!-- For each i, retrieve the information of the i-th book from the ArrayList. -->
 		<!-- Display the information in one row per book. -->
 		<!-- The last element of each row should contain a link to OrderServlet.class --> 

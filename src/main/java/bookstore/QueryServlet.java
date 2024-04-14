@@ -38,13 +38,13 @@ public class QueryServlet extends HttpServlet {
 
 		//Put your code here
 		//create a new ArrayList of Book objects
-		ArrayList<Book> foundBooks = _________________________
+		ArrayList<Book> foundBooks = new ArrayList <>();
 		//get the session object; if there is no existing session, create a new one
-		HttpSession session = _________________________
+		HttpSession session =   request.getSession();
 		//get the ISBN value from the form
-		String isbn = _________________________
+		String isbn = request.getParameter("isbn");
 		//get the Author name from the form
-		String author = _________________________
+		String author = request.getParameter("author");
 
 		/*
 		 * 	Specify to the DriverManager which JDBC drivers to try to make Connections with.
@@ -74,8 +74,7 @@ public class QueryServlet extends HttpServlet {
 			// query database
 			//Put your code here
 			//Retrieve the book information for the input ISBN or Author name
-			String query = _________________________
-
+			String query = "SELECT * FROM bookinfo WHERE Author = '"+author+"' or ISBN = '"+isbn+"' ; ";
 			System.out.println(query);
 			resultSet = statement.executeQuery(query);
 
@@ -91,14 +90,14 @@ public class QueryServlet extends HttpServlet {
 
 				//Put your code here
 				//Create a new Book object with the above information and add this Book object to foundBooks
-				foundBooks.add(_________________________);
+				foundBooks.add(new Book(isbn,title,author,edition,publisher,copyright,price));
 				System.out.println(title + "; " + edition + "; " + publisher + "; " + copyright);
 			}
 			session.setAttribute("foundBooks", foundBooks);
 
 			//Put your code here
 			//Forward the control to BookInfo.jsp
-
+			request.getRequestDispatcher("/BookInfo.jsp").forward(request, response);
 
 		} // end try
 		catch (java.sql.SQLException sqlException) {

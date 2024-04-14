@@ -14,9 +14,10 @@
 	<%
 		// Get the shopping cart object. From the cart object, get the number of books
 		// Put your code here
-		HttpSession session = request.getSession();
+			System.out.print(session.getAttribute("selectedBook"));
 	        ShoppingCart cart = (ShoppingCart) session.getAttribute("bookstore.cart");
 	        int numBooks = (cart != null) ? cart.size() : 0; // corrected method to size()
+	        
 	%>
 	<p style="text-align: center;">
 		You have <%=numBooks %> item(s) in your shopping cart <br> 

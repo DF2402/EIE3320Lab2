@@ -11,10 +11,10 @@ public class Book implements Serializable {
 	private int edition;
 	private String publisher;
 	private String copyright;
-	public Book(String isbn, String author, String title, double price, int edition, String publisher, String copyright) {
+	public Book(String isbn,String title ,  String author, int edition, String publisher, String copyright,double price) {
 		//initialize the private attributes of the Book class
 		//Put your code here
-		this.isbn = isbn;
+			this.isbn = isbn;
 	        this.author = author;
 	        this.title = title;
 	        this.price = price;
