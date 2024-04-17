@@ -34,7 +34,7 @@
 			<td> <%= book.getEdition() %></td>
 			<td> <%= book.getPublisher() %></td>
 			<td> <%= book.getCopyright() %></td>
-			<td> <a href="/EIE3320WebApp/OrderServlet?selectedBook=<%= i %>"  >Add to Cart</a></td>
+			<td> <a href="/bookstore/OrderServlet?selectedBook=<%= i %>"  >Add to Cart</a></td>
 			
 		<!-- For each i, retrieve the information of the i-th book from the ArrayList. -->
 		<!-- Display the information in one row per book. -->
