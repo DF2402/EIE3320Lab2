@@ -71,7 +71,6 @@ public class OrderServlet extends HttpServlet {
 		// Get the index of the selected book from BookInfo.jsp
 		/* Put your code here */
 	        String selectedBook = request.getParameter("selectedBook") ;
-			System.out.println("selectedBook: "+selectedBook);
 		
 		// Add the selected book object to the Shopping cart 
 	// Set the cart to session attribute

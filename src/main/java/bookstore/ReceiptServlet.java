@@ -7,6 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class ReceiptServlet
@@ -30,14 +31,20 @@ public class ReceiptServlet extends HttpServlet {
 
 		// Get the session object and get the ShoppingCart object through the session attribute.
 		// Remove all books in the shopping cart 
-	// Set the cart to the session attribute
+		// Set the cart to the session attribute
 		// Put your code here
-
+		HttpSession session = request.getSession(false); 
+		ShoppingCart cart = (ShoppingCart) session.getAttribute("bookstore.cart");
+		cart.removeAll(cart);
+		session.setAttribute("bookstore.cart", cart);
 
 		// Get the customer name that the user inputs in the check-out.jsp
 		// Get a PrintWriter object and set content type to "text/html"
 		//Put your code here
+		String customerName = (String) request.getParameter("customerName");
 		
+        response.setContentType("text/html");
+        PrintWriter out = response.getWriter();
 		/*
 		 * Assume perform credit card transaction here
 		 */
@@ -45,7 +52,7 @@ public class ReceiptServlet extends HttpServlet {
 		// Print transaction info and forward to SearchBook.html after 5 seconds
 		// Note that it is better to implement the following part in another JSP. 
 		// It is put here because the information is simple enough to be displayed by a servlet.
-		
+        
 		String outStr = "";
 		outStr += "Dear " + customerName + " , thanks for purchasing books from BookStore<br>\n";
 		outStr += "This page will be automatically go back to SearchBook.html<br>\n";

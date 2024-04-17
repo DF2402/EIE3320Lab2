@@ -17,9 +17,9 @@
 	<%
 		// Get the ShoppingCart object through the session attribute.
 		// Put your code here
-		
+		ShoppingCart cart = (ShoppingCart) session.getAttribute("bookstore.cart");
 		// Compute the total price of all books in the shopping cart
-		double total = /* Put your code here */;
+		double total = cart.getTotalPrice();
 	%>
 	Your total purchase is: <%=total %> <p></p>
 	To purchase the item in your shopping cart, please provide us the following information:
