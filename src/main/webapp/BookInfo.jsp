@@ -4,6 +4,9 @@
 </head>
 <body>
 
+	Student: FENG Wai Lam/WANG Haoyu<br>
+	Student ID:22175501d/22102084d<br><br>
+
 	<%@page import="java.util.ArrayList" %>
 	<%@page import="java.util.Date" %>
 	<%@page import="bookstore.*" %>
